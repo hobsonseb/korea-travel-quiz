@@ -28,6 +28,7 @@ DEFAULT = [
 ]
 
 class QuizGame:
+       """퀴즈 실행, 문제 추가, 점수 및 저장 기능을 관리하는 클래스."""
     def __init__(self):
         self.quizzes = list(DEFAULT)
         self.best_score = None
