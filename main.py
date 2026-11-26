@@ -130,6 +130,7 @@ class QuizGame:
         if not self.quizzes:
             print('등록된 퀴즈가 없습니다.')
         else:
+            print(f'총 {len(self.quizzes)}개의 퀴즈가 있습니다.')
             for i, quiz in enumerate(self.quizzes, 1):
                 print(f'{i}. {quiz.question}')
 
