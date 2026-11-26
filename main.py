@@ -4,7 +4,8 @@ from pathlib import Path
 STATE = Path(__file__).resolve().parent / 'state.json'
 
 class Quiz:
-        """퀴즈 문제와 선택지, 정답을 관리하는 클래스."""
+    """퀴즈 문제와 선택지, 정답을 관리하는 클래스."""
+
     def __init__(self, question, choices, answer):
         self.question, self.choices, self.answer = question, choices, answer
 
@@ -28,7 +29,8 @@ DEFAULT = [
 ]
 
 class QuizGame:
-       """퀴즈 실행, 문제 추가, 점수 및 저장 기능을 관리하는 클래스."""
+    """퀴즈 실행, 문제 추가, 점수 및 저장 기능을 관리하는 클래스."""
+
     def __init__(self):
         self.quizzes = list(DEFAULT)
         self.best_score = None
@@ -83,27 +85,33 @@ class QuizGame:
             if value:
                 return value
             print('빈 내용은 입력할 수 없습니다.')
-
     def play(self):
         if not self.quizzes:
             print('등록된 퀴즈가 없습니다.')
             return
+
         correct = 0
+
         for i, quiz in enumerate(self.quizzes, 1):
             print(f'\n[문제 {i}/{len(self.quizzes)}]')
             quiz.show()
             answer = self.number('정답 (1~4): ', 1, 4)
+
             if quiz.check(answer):
                 print('정답입니다!')
                 correct += 1
             else:
-                print(f'오답입니다. 정답: {quiz.answer}번')
+                print(f'오답입니다. 정답: {quiz.answer}번 ({quiz.choices[quiz.answer - 1]})')
+
         score = round(correct * 100 / len(self.quizzes))
         print(f'결과: {correct}/{len(self.quizzes)}문제 정답, {score}점')
+
         if self.best_score is None or score > self.best_score:
             self.best_score = score
             print('새로운 최고 점수!')
+
         self.save()
+    
 
     def add(self):
         question = self.required_text('문제: ')
