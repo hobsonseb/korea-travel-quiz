@@ -95,7 +95,12 @@ class QuizGame:
         for i, quiz in enumerate(self.quizzes, 1):
             print(f'\n[문제 {i}/{len(self.quizzes)}]')
             quiz.show()
-            answer = self.number('정답 (1~4): ', 1, 4)
+
+            answer = self.number('정답 (0: 메뉴로 돌아가기, 1~4): ', 0, 4)
+
+            if answer == 0:
+                print('퀴즈를 중단하고 메뉴로 돌아갑니다.')
+                return
 
             if quiz.check(answer):
                 print('정답입니다!')
