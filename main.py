@@ -4,6 +4,7 @@ from pathlib import Path
 STATE = Path(__file__).resolve().parent / 'state.json'
 
 class Quiz:
+        """퀴즈 문제와 선택지, 정답을 관리하는 클래스."""
     def __init__(self, question, choices, answer):
         self.question, self.choices, self.answer = question, choices, answer
 
