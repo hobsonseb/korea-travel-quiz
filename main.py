@@ -157,6 +157,7 @@ class QuizGame:
             print('\n입력이 중단되어 안전하게 종료합니다.')
         finally:
             self.save()
+        print('한국 여행 퀴즈를 이용해 주셔서 감사합니다.')     
         print('게임을 종료합니다.')
 
 if __name__ == '__main__':
